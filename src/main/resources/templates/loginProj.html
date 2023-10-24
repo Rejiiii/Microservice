@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="base::Layout(~{::section})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page for userproject</title>
+</head>
+
+<body>
+
+    <section>
+        <!-- Login form for userproject -->
+        <div class="container p-5">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="card">
+                        <div class="card-header text-center fs-4">User Project Login Page</div>
+
+                        <div th:if="${param.error}" class="alert alert-danger">
+                            Invalid username & Password</div>
+                        <div th:if="${param.logout}" class="alert alert-success">
+                            Logout Sucessfully</div>
+                        <div class="card-body">
+                            <form action="/login" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label">Username</label>
+                                    <input type="text" name="username" class="form-control" id="username"
+                                        aria-describedby="emailHelp">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <button class="btn btn-primary col-md-12">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
