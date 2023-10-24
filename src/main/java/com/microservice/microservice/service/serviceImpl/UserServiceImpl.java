@@ -1,29 +1,43 @@
 package com.microservice.microservice.service.serviceImpl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.microservice.microservice.dao.UserDao;
-import com.microservice.microservice.model.User;
-import com.microservice.microservice.service.UserService;
+import com.microservice.microservice.model.AuthResponse;
+import com.microservice.microservice.model.UserOutput;
+import com.microservice.microservice.service.AuthService;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements AuthService{
     
   @Autowired
     private UserDao userDao;
 
     @Override
-    public User getByUsername(String username) {
-        return userDao.getByUsername(username);
+    public AuthResponse authUser(String username, String password) {
+        UserOutput user = userDao.getByUsername(username);
+        AuthResponse response = new AuthResponse();
+
+        if (user != null && password.equals(user.getPassword())){
+            response.setSuccess(true);
+        } else {
+            response.setSuccess(false);
+            response.setErrorMessage("Incorrect password.");
+        }
+        return response;
     }
 
-    public boolean authenticateUser(String username, String password) {
-        User user = getByUsername(username);
-        if (user != null) {
-            // Compare the provided password with the stored password (without BCrypt)
-            return password.equals(user.getPassword());
-        }
-        return false;
+    @Override
+    public Map<String, String> logout(String emp_id){
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "logout success");
+
+        return response;
     }
+
+
 }

@@ -1,8 +1,8 @@
 package com.microservice.microservice.service;
 
-import com.microservice.microservice.model.User;
+import com.microservice.microservice.model.UserOutput;
 
 public interface UserService {
     
-    User getByUsername(String username);
+    UserOutput getByUsername(String username);
 }

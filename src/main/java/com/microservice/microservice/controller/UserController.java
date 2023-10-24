@@ -2,39 +2,39 @@ package com.microservice.microservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.microservice.microservice.model.User;
-import com.microservice.microservice.service.UserService;
+import com.microservice.microservice.model.AuthResponse;
+import com.microservice.microservice.service.serviceImpl.UserServiceImpl;
 
 @Controller
+@RequestMapping("/")
 public class UserController {
     
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
-    @GetMapping("/loginUser")
-    public String loginUser() {
-        return "loginUser"; 
+    @GetMapping("/login")
+    public String loginPage() {
+        return "loginUser"; // Return the name of your Thymeleaf login page.
     }
 
-    @GetMapping("/error")
-    public String handleError() {
-        return "error"; 
-    }
+    @PostMapping("/login")
+    public String loginUser(@RequestParam String username, @RequestParam String password, Model model) {
+        AuthResponse response = userService.authUser(username, password);
 
-    @PostMapping("/loginUser")
-    public String login(@RequestParam String username, @RequestParam String password) {
-        User existingUser = userService.getByUsername(username);
-
-        if (existingUser != null && password.equals(existingUser.getPassword())) {
-            // Successful login, redirect to the index page
-            return "redirect:/index";
+        if (response.isSuccess()) {
+            // Successful login
+            model.addAttribute("success", "Login successfully");
+            return "redirect:/index"; // Use the forward slash to indicate an absolute path.
         } else {
-            // Authentication failed, redirect back to the login page with an error parameter
-            return "redirect:/login?error";
+            // Failed login
+            model.addAttribute("error", response.getErrorMessage());
+            return "login"; // Return the login page with an error message.
         }
     }
 }
