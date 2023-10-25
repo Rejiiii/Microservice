@@ -1,43 +1,65 @@
 package com.microservice.microservice.service.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.microservice.microservice.dao.UserDao;
-import com.microservice.microservice.model.AuthResponse;
-import com.microservice.microservice.model.UserOutput;
-import com.microservice.microservice.service.AuthService;
+import com.microservice.microservice.model.UserInfoOutput;
+import com.microservice.microservice.service.UserService;
 
 @Service
-public class UserServiceImpl implements AuthService{
+public class UserServiceImpl implements UserService{
     
-  @Autowired
-    private UserDao userDao;
-
+    @Autowired
+    public UserDao userDao;
+    
     @Override
-    public AuthResponse authUser(String username, String password) {
-        UserOutput user = userDao.getByUsername(username);
-        AuthResponse response = new AuthResponse();
+    public UserInfoOutput getUserById(String id) {
+        try {
+        UserInfoOutput user = userDao.getUserById(id);
 
-        if (user != null && password.equals(user.getPassword())){
-            response.setSuccess(true);
-        } else {
-            response.setSuccess(false);
-            response.setErrorMessage("Incorrect password.");
+        List<String> userRoleLevelList = new ArrayList<>();
+
+        Map<String, Object> role_user_level = new HashMap<>();
+
+        String[] parts = user.getRole_user_level_string().split(",");
+
+        // Create a list to store the objects
+        List<String> objectList = new ArrayList<>();
+
+        // Convert the substrings to integers and add them to the list
+        for (String part : parts) {
+        try {
+        objectList.add(part);
+        } catch (NumberFormatException e) {
+        // Handle parsing errors if necessary
+        System.err.println("Failed to parse: " + part);
         }
-        return response;
+        }
+
+        role_user_level.put("role_user_level", objectList);
+        // for(String userRoleLevel : user.getRole_user_level()) {
+        // userRoleLevelList.add(userRoleLevel);
+        // }
+
+        // user.setRole_user_level(userRoleLevelList);
+        user.setRole_user_level(role_user_level);
+
+        System.out.println("User" + user);
+        System.out.println("User Role Level String: " +
+        user.getRole_user_level_string());
+        System.out.println("User Role Level: " + user.getRole_user_level());
+
+        return user;
+        } catch (Exception e) {
+        System.out.println("User" + e.getMessage());
+        System.out.println("User Role Level: " + e.getMessage());
+        return null;
+        }
     }
-
-    @Override
-    public Map<String, String> logout(String emp_id){
-        Map<String, String> response = new HashMap<>();
-        response.put("status", "logout success");
-
-        return response;
-    }
-
-
 }
