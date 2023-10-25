@@ -1,33 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{index::Layout(~{::section})}">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{index::Layout(~{::body})}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page for User</title>
+
+    <!-- Custom CSS link -->
+    <link rel="stylesheet" href="/style/loginUserStyles.css">
+
+    <title>Login page for User</title>  
 </head>
 
 <body>
 
-    <section>
         <!-- Login form for user -->
         <div class="container p-5">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <div class="card">
-                        <div class="card-header text-center fs-4">User Login Page</div>
-
+                
                         <!-- Display error message -->
                         <div th:if="${param.error}" class="alert alert-danger">
                             Invalid username or password. Please try again.
                         </div>
 
-                        <!-- Display success message -->
-                        <div th:if="${param.logout}" class="alert alert-success">
-                            Logout Successfully
-                        </div>
-
                         <div class="card-body">
+                            <div class="text-center fs-4">User Login Page</div>
+
                             <form th:action="@{/loginUser}" method="post">
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Username</label>
@@ -41,13 +40,19 @@
 
                                 <button class="btn btn-primary col-md-12" type="submit">Login</button>
                             </form>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
+        <!-- Image design -->
+        <div class="col-md-6">
+            <div class="myRightCtn">
+                <img src="/pictures/testing 1.jpg" alt="">
+            </div>
+        </div>
 
 
 </body>
