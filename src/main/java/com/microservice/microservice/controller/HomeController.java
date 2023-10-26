@@ -22,4 +22,9 @@ public class HomeController {
     public String projectPage(){
         return "projPage";
     }
+
+    @GetMapping("/user_login")
+    public String user_login(){
+        return "loginUser";
+    }
 }
