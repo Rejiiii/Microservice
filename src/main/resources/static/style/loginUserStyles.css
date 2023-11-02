@@ -9,43 +9,24 @@
 }
 
 body {
-  font-family: 'Alegreya', serif;
+  /* font-family: 'Alegreya', serif;
   font-family: 'Alegreya Sans', sans-serif;
   font-family: 'Alegreya SC', serif;  
-  font-family: "Varela", sans-serif;
-  background-color: #fff;
-  --light-blue: #373c81;
-  --dark-blue: #19507D;
-  --light-pink: #f4abaa;
-  --dark-pink: #ee7879;
-  --medium-green: #57cb00;
-}
-
-p {
-  color: #b3b3b3;
-  font-weight: 300;
+  font-family: "Varela", sans-serif; */
+  background-color: #ffffff;
+  background-image: url("/pictures/bg-userlogin.jpg");
 }
 
 h1, h2, h4, h5, h6,.h1, .h2, .h4,.h5, .h6 {
-  font-family: "Roboto", sans-serif;
+  font-family: sans-serif;
   font-weight: bold;
 }
 
 h3, .h3 {
-  font-family: "Roboto", sans-serif;
+  font-family: serif; 
   font-weight: bold;
   font-size: 50px;
 
-}
-
-a {
-  -webkit-transition: .3s all ease;
-  -o-transition: .3s all ease;
-  transition: .3s all ease;
-}
-
-a:hover {
-  text-decoration: none !important;
 }
 
 .content {
@@ -92,11 +73,13 @@ h2 {
   margin-bottom: 5px;
   padding: 15px 15px;
   position: relative;
-  border: 1px solid #000;
+  border: 2px solid #5d5757;
+  background-color: white;
 }
 
 .half .contents .form-group label,
 .half .bg .form-group label {
+  font-family: serif;
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -130,6 +113,7 @@ h2 {
 
 .half .contents .form-group label,
 .half .bg .form-group label {
+  font-family: serif;
   font-size: 15px;
   display: block;
   margin-bottom: 0;
@@ -171,6 +155,8 @@ h2 {
 }
 
 .half .logbutton {
+  font-family: serif;
+  font-weight: bold;
     display: flex!important;
     justify-content: center;
     background-color: rgb(56, 179, 103);
