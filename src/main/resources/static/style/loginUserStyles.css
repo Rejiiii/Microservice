@@ -71,18 +71,18 @@ h2 {
 .half .bg .form-group {
   overflow: hidden;
   margin-bottom: 67px;
-  padding: 5px 15px;
+  padding: 20px 15px;
   position: relative;
   border: 2px solid #5d5757;
   background-color: white;
-  height: 45px;
+  height: 65px;
 }
 
 .half .contents .form-group label,
 .half .bg .form-group label {
   font-family: serif;
   position: absolute;
-  top: 50%;
+  top: 55%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -98,24 +98,24 @@ h2 {
 
 .half .contents .form-group.first,
 .half .bg .form-group.first {
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .half .contents .form-group.last,
 .half .bg .form-group.last {
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .half .contents .form-group label,
 .half .bg .form-group label {
   font-family: serif;
-  font-size: 15px;
+  font-size: 18px;
   display: block;
   margin-bottom: 0;
   color: #b3b3b3;
@@ -123,14 +123,14 @@ h2 {
 
 .half .contents .form-group.field--not-empty label,
 .half .bg .form-group.field--not-empty label {
-  margin-top: -13px;
+  margin-top: -20px;
 }
 
 .half .contents .form-control,
 .half .bg .form-control {
   border: none;
   padding: 0;
-  font-size: 20px;
+  font-size: 18px;
   border-radius: 0;
 }
 
@@ -163,19 +163,19 @@ h2 {
     background-color: rgb(56, 179, 103);
     border-color: rgb(56, 179, 103);
     border-radius: 50px;
-    height: 40px;
+    height: 60px;
 }
 
 .half .btn {
-  height: 40px;
-  font-size: 18px;
+  height: 20;
+  font-size: 22px;
   padding-left: 30px;
   padding-right: 30px;
   border-radius: 50px;
 }
 
 .half .btn:hover {
-  height: 40px;
+  height: 60px;
   background-color: rgb(23, 110, 81);
   border-color: rgb(23, 110, 81);
   color: white;
